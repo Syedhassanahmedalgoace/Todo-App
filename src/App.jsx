@@ -1,15 +1,26 @@
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
-
-import AddTodoForm from "./component/addTodoForm";
-import TodoList from "./component/todoList";
+import HomePage from "./component/Pages/HomePage";
+import Register from "./component/Pages/Register";
+import Login from "./component/Pages/Login";
+import Profile from "./component/Pages/Profile";
+import TodoList from "./component/todoList/index";
 
 function App() {
   return (
-    <div className="container mx-auto max-w-md h-screen py-6">
-      <div className="flex flex-col p-4 border rounded-lg shadow-lg h-full">
-        <h1 className="text-2xl font-bold mb-4">Todo List</h1>
-        <AddTodoForm />
-        <TodoList />
+    <div className="App">
+      <div className="max-w-[90%] md:max-w-[50%] mx-auto">
+        <Routes>
+          <Route element={<Login />} path="/login" />
+          <Route element={<Register />} path="/register" />
+
+          {/* HomePage ko default route ke liye set kiya */}
+          <Route element={<HomePage />} path="/" />
+
+          {/* Profile and TodoList ko login ke baad accessible banayenge */}
+          <Route element={<Profile />} path="/profile" />
+          <Route element={<TodoList />} path="/todo-list" />
+        </Routes>
       </div>
     </div>
   );
